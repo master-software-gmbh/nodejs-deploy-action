@@ -1,0 +1,107 @@
+name: Deploy Node.js
+description: Deploys a Node.js application
+
+inputs:
+  registry-username:
+    description: Registry username
+    required: true
+  registry-password:
+    description: Registry password
+    required: true
+  npm-registry-url:
+    description: NPM registry URL
+    required: true
+    default: https://registry.master-software.de/repository/npm-msoft
+  docker-registry-url:
+    description: Docker registry URL
+    required: true
+  build-args:
+    description: Additional build arguments
+    required: false
+    default: ""
+
+outputs:
+  image-tag:
+    description: Image tag
+    value: ${{ steps.generate-tag.outputs.image-tag }}
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Detect application
+      shell: bash
+      run: |
+        if [ -f nest-cli.json ]; then
+          echo "application-type=nestjs" >> $GITHUB_ENV
+        elif [ -f nuxt.config.ts ]; then
+          echo "application-type=nuxt" >> $GITHUB_ENV
+        elif [ -f astro.config.ts ]; then
+          echo "application-type=astro" >> $GITHUB_ENV
+        else
+          echo "::error Type of application could not be detected"
+        fi
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        scope: master-software
+        node-version-file: .nvmrc
+        registry-url: ${{ inputs.npm-registry-url }}
+
+    - id: generate-token
+      name: Generate NPM token
+      uses: master-software-gmbh/npm-token-action@v1.0.0
+      with:
+        username: ${{ inputs.registry-username }}
+        password: ${{ inputs.registry-password }}
+        registry-url: ${{ inputs.npm-registry-url }}
+
+    - name: Login to image registry
+      uses: docker/login-action@v3
+      with:
+        registry: ${{ inputs.docker-registry-url }}
+        username: ${{ inputs.registry-username }}
+        password: ${{ inputs.registry-password }}
+
+    - id: set-tag
+      name: Set image tag
+      shell: bash
+      run: |
+        IMAGE_TAG=$(cat package.json | jq -r '"${{ inputs.docker-registry-url }}/\(.name | capture("^(?<scope>@[^/]+)?/?(?<name>.+)$").name):\(.version)"')
+        echo "image-tag=$IMAGE_TAG" >> $GITHUB_OUTPUT
+
+    - name: Copy files to context
+      shell: bash
+      run: |
+        cp $NPM_CONFIG_USERCONFIG .
+        cp ${{ github.action_path }}/${{ env.application-type }}/tsconfig.build.json .
+
+    - id: format-build-args
+      name: Format build args list
+      shell: bash
+      run: |
+        BUILD_ARGS_LIST=$(echo -n "${{ inputs.build-args }}" | tr -s '\n[:blank:]' ',')
+        echo "build-args=$BUILD_ARGS_LIST" >> $GITHUB_OUTPUT
+
+    - name: Generate Dockerfile
+      uses: master-software-gmbh/ejs-template-action@v1.0.0
+      with:
+        template-path: ${{ github.action_path }}/${{ env.application-type }}/Dockerfile
+        output-path: Dockerfile
+        json-data: |
+          {
+            "buildArgs": "${{ steps.format-build-args.outputs.build-args }}"
+          }
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        push: true
+        tags: ${{ steps.set-tag.outputs.image-tag }}
+        build-args: |
+          NODE_AUTH_TOKEN=${{ steps.generate-token.outputs.npm-token }}
+          ${{ inputs.build-args }}
