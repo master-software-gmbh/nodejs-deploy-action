@@ -34,6 +34,12 @@ runs:
     - name: Detect application
       shell: bash
       run: |
+        if grep -s -q lfs .gitattributes; then
+          echo "lfs-enabled=true" >> $GITHUB_ENV
+        else
+          echo "lfs-enabled=false" >> $GITHUB_ENV
+        fi
+
         if [ -f nest-cli.json ]; then
           echo "application-type=nestjs" >> $GITHUB_ENV
         elif [ -f nuxt.config.ts ]; then
@@ -43,6 +49,11 @@ runs:
         else
           echo "::error Type of application could not be detected"
         fi
+
+    - name: Checkout LFS
+      if: ${{ env.lfs-enabled == 'true' }}
+      shell: bash
+      run: git lfs pull
 
     - name: Setup Node.js
       uses: actions/setup-node@v4
