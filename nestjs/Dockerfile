@@ -39,4 +39,6 @@ COPY --from=buildtime /build/node_modules ./node_modules
 COPY --from=buildtime /build/prisma ./prisma
 COPY --from=buildtime /build/dist ./dist
 
+USER node
+
 CMD npx prisma migrate deploy && node dist/main

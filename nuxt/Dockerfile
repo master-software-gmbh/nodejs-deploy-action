@@ -25,5 +25,12 @@ RUN npx nuxt generate
 # Run stage
 FROM nginx:1.26-alpine-slim AS runtime
 
+# Set filesystem permissions
+RUN touch /var/run/nginx.pid \
+  && chown -R nginx:nginx /var/cache/nginx \
+  && chown -R nginx:nginx /var/run/nginx.pid
+
 # Copy build output
 COPY --from=buildtime /build/.output/public /usr/share/nginx/html
+
+USER nginx
