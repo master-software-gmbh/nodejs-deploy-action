@@ -2,9 +2,12 @@
 FROM node:20-alpine3.19 AS buildtime
 
 ARG NODE_AUTH_TOKEN
-<% for (const arg of buildArgs.split(',').map((a) => a.split('=')[0])) { %>
-ARG <%- arg _%>
-<% } %>
+<% if (buildArgs.length) { %>
+# Injected build arguments
+<% for (const arg of buildArgs.split(',').map((a) => a.split('=')[0])) { -%>
+ARG <%- arg %>
+<% } _%>
+<% } _%>
 
 WORKDIR /build
 

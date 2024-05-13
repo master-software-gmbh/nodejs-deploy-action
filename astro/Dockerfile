@@ -2,9 +2,12 @@
 FROM node:20-alpine3.19 AS buildtime
 
 ARG NODE_AUTH_TOKEN
-<% for (const arg of buildArgs.split(',').map((a) => a.split('=')[0])) { %>
-ARG <%- arg _%>
-<% } %>
+<% if (buildArgs.length) { %>
+# Injected build arguments
+<% for (const arg of buildArgs.split(',').map((a) => a.split('=')[0])) { -%>
+ARG <%- arg %>
+<% } _%>
+<% } _%>
 
 WORKDIR /build
 
@@ -15,7 +18,7 @@ RUN npm clean-install --ignore-scripts
 # Build module
 COPY tsconfig.json tsconfig.project.json
 COPY tsconfig.build.json tsconfig.json
-COPY astro.config.mjs ./
+COPY astro.config.ts ./
 COPY ./public ./public
 COPY ./src ./src
 RUN npx astro build
