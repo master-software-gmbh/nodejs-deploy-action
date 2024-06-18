@@ -23,7 +23,7 @@ inputs:
 outputs:
   image-tag:
     description: Image tag
-    value: ${{ steps.generate-tag.outputs.image-tag }}
+    value: ${{ steps.publish-image.outputs.image-tag }}
 
 runs:
   using: composite
@@ -70,20 +70,6 @@ runs:
         password: ${{ inputs.registry-password }}
         registry-url: ${{ inputs.npm-registry-url }}
 
-    - name: Login to image registry
-      uses: docker/login-action@v3
-      with:
-        registry: ${{ inputs.docker-registry-url }}
-        username: ${{ inputs.registry-username }}
-        password: ${{ inputs.registry-password }}
-
-    - id: set-tag
-      name: Set image tag
-      shell: bash
-      run: |
-        IMAGE_TAG=$(cat package.json | jq -r '"${{ inputs.docker-registry-url }}/\(.name | capture("^(?<scope>@[^/]+)?/?(?<name>.+)$").name):\(.version)"')
-        echo "image-tag=$IMAGE_TAG" >> $GITHUB_OUTPUT
-
     - name: Copy files to context
       shell: bash
       run: |
@@ -106,13 +92,15 @@ runs:
           {
             "buildArgs": "${{ steps.format-build-args.outputs.build-args }}"
           }
-
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v5
+    
+    - id: publish-image
+      name: Publish Docker image
+      uses: master-software-gmbh/docker-publish-action@v1.0.0
       with:
-        context: .
-        push: true
-        tags: ${{ steps.set-tag.outputs.image-tag }}
+        manifest-file: package.json
+        registry-username: ${{ inputs.registry-username }}
+        registry-password: ${{ inputs.registry-password }}
+        docker-registry-url: ${{ inputs.docker-registry-url }}
         build-args: |
           NODE_AUTH_TOKEN=${{ steps.generate-token.outputs.npm-token }}
           ${{ inputs.build-args }}
