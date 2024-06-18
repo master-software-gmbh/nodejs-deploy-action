@@ -1,4 +1,4 @@
-name: Release NodeJS deploy action
+name: Release GitHub action
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   publish:
-    name: Release NodeJS deploy action
+    name: Release GitHub action
     runs-on: ubuntu-latest
     permissions:
       contents: write
