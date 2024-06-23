@@ -28,9 +28,6 @@ outputs:
 runs:
   using: composite
   steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-
     - name: Detect application
       shell: bash
       run: |
@@ -92,7 +89,7 @@ runs:
           {
             "buildArgs": "${{ steps.format-build-args.outputs.build-args }}"
           }
-    
+
     - id: publish-image
       name: Publish Docker image
       uses: master-software-gmbh/docker-publish-action@v1.0.0

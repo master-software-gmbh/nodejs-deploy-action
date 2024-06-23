@@ -35,9 +35,9 @@ WORKDIR /app
 ENV NODE_ENV=production
 
 # Copy build output
-COPY --from=buildtime /build/node_modules ./node_modules
-COPY --from=buildtime /build/prisma ./prisma
-COPY --from=buildtime /build/dist ./dist
+COPY --from=buildtime --chown=node:node /build/node_modules ./node_modules
+COPY --from=buildtime --chown=node:node /build/prisma ./prisma
+COPY --from=buildtime --chown=node:node /build/dist ./dist
 
 USER node
 
