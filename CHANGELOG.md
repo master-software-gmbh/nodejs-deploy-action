@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.3.0...v1.4.0) (2024-06-23)
+
+
+### Features
+
+* remove checkout step, set file permissions for build output ([5ab3d84](https://github.com/master-software-gmbh/nodejs-deploy-action/commit/5ab3d845f9829c41a4c3cc3a59d9a0ce0c102f22))
+
 # [1.3.0](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.2.0...v1.3.0) (2024-06-18)
 
 
