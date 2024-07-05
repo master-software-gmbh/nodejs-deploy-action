@@ -27,8 +27,7 @@ RUN npx astro build
 FROM nginx:1.26-alpine-slim AS runtime
 
 # Update default configuration
-RUN sed -i 's,listen       80;,listen       8080;,' /etc/nginx/conf.d/default.conf \
-  && sed -i 's,/var/run/nginx.pid,/tmp/nginx.pid,' /etc/nginx/nginx.conf \
+RUN sed -i 's,/var/run/nginx.pid,/tmp/nginx.pid,' /etc/nginx/nginx.conf \
   && sed -i '/user  nginx;/d' /etc/nginx/nginx.conf
 
 # Set filesystem permissions
