@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.5.0...v1.6.0) (2024-07-04)
+
+
+### Features
+
+* improve nginx configuration for non-root user ([2cb68e1](https://github.com/master-software-gmbh/nodejs-deploy-action/commit/2cb68e1fb5d0b51fb966aa63599e09cf2b46df3f))
+
 # [1.5.0](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.4.0...v1.5.0) (2024-06-24)
 
 
