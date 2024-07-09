@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.6.1...v1.7.0) (2024-07-09)
+
+
+### Features
+
+* replace nginx with caddy for nuxt image ([e282912](https://github.com/master-software-gmbh/nodejs-deploy-action/commit/e28291274ed3f75c5547cc23023a827451e91b40))
+
 ## [1.6.1](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.6.0...v1.6.1) (2024-07-05)
 
 
