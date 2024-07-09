@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.6.0...v1.6.1) (2024-07-05)
+
+
+### Bug Fixes
+
+* revert port change ([1963c63](https://github.com/master-software-gmbh/nodejs-deploy-action/commit/1963c63bfc6d35683fac484e2543e2be3fd755d4))
+
 # [1.6.0](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.5.0...v1.6.0) (2024-07-04)
 
 
