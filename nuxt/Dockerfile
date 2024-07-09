@@ -26,4 +26,4 @@ RUN npx nuxt generate
 FROM <%= registry %>/caddy:1 AS runtime
 
 # Copy build output
-COPY --from=buildtime /build/.output/public /var/www/html
+COPY --from=buildtime /build/.output/public /srv
