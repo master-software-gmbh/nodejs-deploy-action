@@ -23,7 +23,7 @@ COPY ./src ./src
 RUN npx nuxt generate
 
 # Run stage
-FROM <% registry %>/caddy:1 AS runtime
+FROM <%= registry %>/caddy:1 AS runtime
 
 # Copy build output
 COPY --from=buildtime /build/.output/public /var/www/html
