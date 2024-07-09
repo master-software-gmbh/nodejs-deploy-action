@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.7.0...v1.7.1) (2024-07-09)
+
+
+### Bug Fixes
+
+* variable placeholder in template ([933d8c9](https://github.com/master-software-gmbh/nodejs-deploy-action/commit/933d8c9411fa120dbff269f4b0e766b6bead0f1a))
+
 # [1.7.0](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.6.1...v1.7.0) (2024-07-09)
 
 
