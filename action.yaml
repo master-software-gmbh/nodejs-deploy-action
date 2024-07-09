@@ -93,7 +93,7 @@ runs:
 
     - id: publish-image
       name: Publish Docker image
-      uses: master-software-gmbh/docker-publish-action@v1.0.0
+      uses: master-software-gmbh/docker-publish-action@v1
       with:
         manifest-file: package.json
         registry-username: ${{ inputs.registry-username }}
