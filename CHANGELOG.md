@@ -1,3 +1,10 @@
+## [1.7.2](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.7.1...v1.7.2) (2024-07-09)
+
+
+### Bug Fixes
+
+* use major version tag of docker publish action ([e73cc85](https://github.com/master-software-gmbh/nodejs-deploy-action/commit/e73cc855f587ca4bacd8cd1918dacb7597ea4ac8))
+
 ## [1.7.1](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.7.0...v1.7.1) (2024-07-09)
 
 
