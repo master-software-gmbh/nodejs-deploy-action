@@ -23,17 +23,7 @@ COPY ./src ./src
 RUN npx nuxt generate
 
 # Run stage
-FROM nginx:1.26-alpine-slim AS runtime
-
-# Update default configuration
-RUN sed -i 's,/var/run/nginx.pid,/tmp/nginx.pid,' /etc/nginx/nginx.conf \
-  && sed -i '/user  nginx;/d' /etc/nginx/nginx.conf
-
-# Set filesystem permissions
-RUN chown -R nginx:nginx /var/cache/nginx \
-  && chown -R nginx:nginx /etc/nginx
+FROM <% registry %>/caddy:1 AS runtime
 
 # Copy build output
-COPY --from=buildtime /build/.output/public /usr/share/nginx/html
-
-USER nginx
+COPY --from=buildtime /build/.output/public /var/www/html

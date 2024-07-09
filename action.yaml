@@ -87,7 +87,8 @@ runs:
         output-path: Dockerfile
         json-data: |
           {
-            "buildArgs": "${{ steps.format-build-args.outputs.build-args }}"
+            "buildArgs": "${{ steps.format-build-args.outputs.build-args }}",
+            "registry": "${{ inputs.docker-registry-url }}"
           }
 
     - id: publish-image
