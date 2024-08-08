@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.7.2...v1.8.0) (2024-07-09)
+
+
+### Features
+
+* change web root ([7d300d9](https://github.com/master-software-gmbh/nodejs-deploy-action/commit/7d300d9780846da32cfdfd0e20170fc092983f5a))
+
 ## [1.7.2](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.7.1...v1.7.2) (2024-07-09)
 
 
