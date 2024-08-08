@@ -1,0 +1,5 @@
+{
+  "name": "@master-software/nodejs-deploy-action",
+  "description": "Deploys a Node.js application",
+  "version": "1.7.2"
+}
