@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.9.2...v1.10.0) (2024-12-01)
+
+
+### Features
+
+* run optional install scripts ([5ec9dec](https://github.com/master-software-gmbh/nodejs-deploy-action/commit/5ec9dec5deab11a21c38a097362fa571072bef03))
+
 ## [1.9.2](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.9.1...v1.9.2) (2024-12-01)
 
 
