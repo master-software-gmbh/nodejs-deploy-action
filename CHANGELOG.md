@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.8.1...v1.9.0) (2024-12-01)
+
+
+### Features
+
+* add nodejs image ([3c7536a](https://github.com/master-software-gmbh/nodejs-deploy-action/commit/3c7536a9f0929afa7f190ff57759df21db351b13))
+
 ## [1.8.1](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.8.0...v1.8.1) (2024-08-08)
 
 # [1.8.0](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.7.2...v1.8.0) (2024-07-09)
