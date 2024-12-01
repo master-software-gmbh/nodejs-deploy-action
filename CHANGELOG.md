@@ -1,3 +1,10 @@
+## [1.9.2](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.9.1...v1.9.2) (2024-12-01)
+
+
+### Bug Fixes
+
+* fail silently ([836af79](https://github.com/master-software-gmbh/nodejs-deploy-action/commit/836af79ab2d25d27db16cc71f8916d0d3f29bd0f))
+
 ## [1.9.1](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.9.0...v1.9.1) (2024-12-01)
 
 
