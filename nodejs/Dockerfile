@@ -17,6 +17,9 @@ COPY ./src ./src
 # Install production dependencies
 RUN npm clean-install --omit=dev --ignore-scripts
 
+# Run install scripts if present
+RUN npm run --if-present install
+
 # Run stage
 FROM alpine:3.20 AS runtime
 
