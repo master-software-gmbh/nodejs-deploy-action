@@ -43,6 +43,8 @@ runs:
           echo "application-type=nuxt" >> $GITHUB_ENV
         elif [ -f astro.config.ts ]; then
           echo "application-type=astro" >> $GITHUB_ENV
+        elif [ -f package.json ]; then
+          echo "application-type=nodejs" >> $GITHUB_ENV
         else
           echo "::error Type of application could not be detected"
         fi
