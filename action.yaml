@@ -73,7 +73,8 @@ runs:
       shell: bash
       run: |
         cp $NPM_CONFIG_USERCONFIG .
-        cp ${{ github.action_path }}/${{ env.application-type }}/tsconfig.build.json .
+        TSCONFIG_PATH=${{ github.action_path }}/${{ env.application-type }}/tsconfig.build.json
+        [[ -e $TSCONFIG_PATH ]] && cp $TSCONFIG_PATH .
 
     - id: format-build-args
       name: Format build args list
