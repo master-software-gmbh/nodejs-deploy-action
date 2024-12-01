@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.9.0...v1.9.1) (2024-12-01)
+
+
+### Bug Fixes
+
+* check if tsconfig.build.json file exists before copying ([9e38cfa](https://github.com/master-software-gmbh/nodejs-deploy-action/commit/9e38cfa95ef2b69439b6dac0d68cb81e0ad3aaab))
+
 # [1.9.0](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.8.1...v1.9.0) (2024-12-01)
 
 
