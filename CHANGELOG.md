@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.10.0...v1.11.0) (2024-12-18)
+
+
+### Features
+
+* add Dockerfile for bun applications ([128badf](https://github.com/master-software-gmbh/nodejs-deploy-action/commit/128badf9f8ab601452c35e3ee8a3495d3cb41fc5))
+
 # [1.10.0](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.9.2...v1.10.0) (2024-12-01)
 
 
