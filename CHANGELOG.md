@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.11.0...v1.12.0) (2024-12-21)
+
+
+### Features
+
+* setup bun ([a70387a](https://github.com/master-software-gmbh/nodejs-deploy-action/commit/a70387a11d7879e90b94924c2799a687548d3305))
+
 # [1.11.0](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.10.0...v1.11.0) (2024-12-18)
 
 
