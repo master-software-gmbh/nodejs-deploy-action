@@ -1,7 +1,7 @@
 # Build stage
 FROM oven/bun:1-alpine AS buildtime
 
-ARG NODE_AUTH_TOKEN
+ARG BUN_AUTH_TOKEN
 <% if (buildArgs.length) { %>
 # Injected build arguments
 <% for (const arg of buildArgs.split(',').map((a) => a.split('=')[0])) { -%>
@@ -15,7 +15,7 @@ WORKDIR /build
 RUN apk add upx
 RUN upx --all-methods --no-lzma /usr/local/bin/bun
 
-COPY .npmr[c] package.json bun.lockb ./
+COPY bunfig.tom[l] package.json bun.lockb ./
 COPY ./src ./src
 
 # Install production dependencies

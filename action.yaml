@@ -69,7 +69,7 @@ runs:
       uses: oven-sh/setup-bun@v2
       with:
         bun-version: latest
-        scope: "@master-software"
+        scope: master-software
         registry-url: ${{ inputs.npm-registry-url }}
 
     - id: generate-token
@@ -83,8 +83,11 @@ runs:
     - name: Copy files to context
       shell: bash
       run: |
-        cp $NPM_CONFIG_USERCONFIG .
         cp ${{ github.action_path }}/${{ env.application-type }}/tsconfig.build.json . 2>/dev/null || :
+
+        if [ -n "$NPM_CONFIG_USERCONFIG" ]; then
+          cp $NPM_CONFIG_USERCONFIG .
+        fi
 
     - id: format-build-args
       name: Format build args list
