@@ -57,10 +57,19 @@ runs:
       run: git lfs pull
 
     - name: Setup Node.js
+      if: ${{ env.application-type != 'bun' }}
       uses: actions/setup-node@v4
       with:
         scope: master-software
         node-version-file: .nvmrc
+        registry-url: ${{ inputs.npm-registry-url }}
+
+    - name: Setup Bun
+      if: ${{ env.application-type == 'bun' }}
+      uses: oven-sh/setup-bun@v2
+      with:
+        bun-version: latest
+        scope: "@master-software"
         registry-url: ${{ inputs.npm-registry-url }}
 
     - id: generate-token
@@ -104,5 +113,6 @@ runs:
         registry-password: ${{ inputs.registry-password }}
         docker-registry-url: ${{ inputs.docker-registry-url }}
         build-args: |
+          BUN_AUTH_TOKEN=${{ steps.generate-token.outputs.npm-token }}
           NODE_AUTH_TOKEN=${{ steps.generate-token.outputs.npm-token }}
           ${{ inputs.build-args }}
