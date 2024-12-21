@@ -37,6 +37,7 @@ RUN chown bun:bun /app
 # Copy build output
 COPY --from=buildtime /usr/local/bin/bun /usr/local/bin/
 COPY --from=buildtime --chown=bun:bun /build/node_modules ./node_modules
+COPY --from=buildtime --chown=bun:bun /build/tsconfig.json ./
 COPY --from=buildtime --chown=bun:bun /build/src ./src
 
 USER bun
