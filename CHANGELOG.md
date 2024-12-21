@@ -1,3 +1,10 @@
+## [1.12.1](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.12.0...v1.12.1) (2024-12-21)
+
+
+### Bug Fixes
+
+* bun context ([f742fcb](https://github.com/master-software-gmbh/nodejs-deploy-action/commit/f742fcba64e00a2183c429031eff3de37716949b))
+
 # [1.12.0](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.11.0...v1.12.0) (2024-12-21)
 
 
