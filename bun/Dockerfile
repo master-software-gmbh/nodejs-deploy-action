@@ -15,7 +15,7 @@ WORKDIR /build
 RUN apk add upx
 RUN upx --all-methods --no-lzma /usr/local/bin/bun
 
-COPY bunfig.tom[l] package.json bun.lockb ./
+COPY bunfig.tom[l] package.json tsconfig.json bun.lockb ./
 COPY ./src ./src
 
 # Install production dependencies
