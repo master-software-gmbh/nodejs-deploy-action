@@ -1,3 +1,10 @@
+## [1.12.2](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.12.1...v1.12.2) (2024-12-21)
+
+
+### Bug Fixes
+
+* copy tsconfig ([bf11716](https://github.com/master-software-gmbh/nodejs-deploy-action/commit/bf117167d38f0c67cdc54674218ae1e9a0bfdf85))
+
 ## [1.12.1](https://github.com/master-software-gmbh/nodejs-deploy-action/compare/v1.12.0...v1.12.1) (2024-12-21)
 
 
